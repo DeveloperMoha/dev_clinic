@@ -10,4 +10,6 @@ class StringManager {
   static const String homeBottomBarItem1 = "consultations";
   static const String homeBottomBarItem2 = "examinations";
   static const String homeBottomBarItem3 = "sessions";
+
+  static const String homePatientName = "sameh khalaf soliman elsayed ali";
 }
