@@ -3,6 +3,8 @@ import 'package:devclinic/presentation/add_reservation/reservation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/entities/patient.dart';
+
 Widget dropDownMenu(dropList, dropValue, context) {
   var cubitObj = BlocProvider.of<ReservationCubit>(context);
   return DropdownButton<String>(
@@ -43,7 +45,7 @@ Widget addingTitleText(String title,
   );
 }
 
-Widget addingAutoCompleteTextField(list, autoCompWidth) {
+Widget addingAutoCompleteTextField(list, autoCompWidth, context) {
   return Container(
       decoration: BoxDecoration(
         color: ColorManager.whiteColor,
@@ -67,7 +69,14 @@ Widget addingAutoCompleteTextField(list, autoCompWidth) {
                 });
               },
               onSelected: (String selection) {
-                print('You just selected $selection');
+                BlocProvider.of<ReservationCubit>(context).patientName =
+                    selection;
+
+                int index = BlocProvider.of<ReservationCubit>(context)
+                    .patientNamesList
+                    .indexOf(selection);
+                BlocProvider.of<ReservationCubit>(context)
+                    .setControllerValues(context, index);
               },
             ),
           ),
@@ -118,12 +127,12 @@ Widget addingTextFormField(
         border: InputBorder.none,
       ),
       controller: fieldController,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please fill field';
-        }
-        return null;
-      },
+      // validator: (value) {
+      //   if (value == null || value.isEmpty) {
+      //     return 'required';
+      //   }
+      //   return null;
+      // },
       enabled: enable,
     ),
   );

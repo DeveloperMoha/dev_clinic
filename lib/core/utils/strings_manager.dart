@@ -13,5 +13,5 @@ class StringManager {
 
   static const String homePatientName = "sameh khalaf soliman elsayed ali";
 
-  static const String addReservationTitle = "Add New Reservation";
+  static const String addReservationTitle = "Add New / Edit Reservation";
 }

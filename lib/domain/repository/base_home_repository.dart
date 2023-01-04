@@ -4,5 +4,5 @@ import '../../core/error/failure.dart';
 import '../entities/reservations.dart';
 
 abstract class BaseHomeRepository {
-  Future<Either<Failure, List<Reservations>>> getAllReservations();
+  Future<Either<Failure, List<Reservations>>> getAllReservations(String date);
 }

@@ -1,4 +1,3 @@
-import 'package:devclinic/core/utils/dummy.dart';
 import 'package:devclinic/data/data_source/base_remote_data_source.dart';
 import 'package:devclinic/data/data_source/home_remote_data_source.dart';
 import 'package:devclinic/data/repository_impl/home_repository.dart';
@@ -44,6 +43,7 @@ class HomeCubit extends Cubit<HomeStates> {
       todayDate = picked.toString().substring(0, 10);
     }
     emit(ChangeHomeSelectedDate(selectedDate: selectedDate.toString()));
+    getAllReservations();
   }
 
   void changeBottomBarIndex(newVal) {
@@ -93,7 +93,7 @@ class HomeCubit extends Cubit<HomeStates> {
         HomeRepository(baseHomeRemoteDataSource: baseHomeRemoteDataSource);
     HomeUseCases homeUseCases =
         HomeUseCases(baseHomeRepository: baseHomeRepository);
-    final allReservationData = await homeUseCases.getAllReservations();
+    final allReservationData = await homeUseCases.getAllReservations(todayDate);
 
     allReservationData.fold((left) {
       allHomeList.add(consultationList);
@@ -163,13 +163,14 @@ class HomeCubit extends Cubit<HomeStates> {
           print("type is unknown");
         }
       }
-      print("right 1");
+      //print("right 1");
       allHomeList = [consultationList, examinationList, sessionList];
-      print("right 2");
-      print("${examinationList[0].patientName} ,, ${examinationList[0].price}");
-      print(
-          "${consultationList[0].patientName} ,, ${consultationList[0].price}");
-      print("${sessionList[0].patientName} ,, ${sessionList[0].price}");
+      // print("right 2");
+      // print("${examinationList[0].patientName} ,, ${examinationList[0].price}");
+      // print(
+      //     "${consultationList[0].patientName} ,, ${consultationList[0].price}");
+      // print("${sessionList[0].patientName} ,, ${sessionList[0].price}");
+
       emit(LoadedHome());
     });
   }

@@ -11,7 +11,8 @@ class HomeUseCases {
     required this.baseHomeRepository,
   });
 
-  Future<Either<Failure, List<Reservations>>> getAllReservations() async {
-    return await baseHomeRepository.getAllReservations();
+  Future<Either<Failure, List<Reservations>>> getAllReservations(
+      String date) async {
+    return await baseHomeRepository.getAllReservations(date);
   }
 }

@@ -8,19 +8,22 @@ import '../../domain/entities/reservations.dart';
 
 class HomeRemoteDataSource implements BaseHomeRemoteDataSource {
   @override
-  Future<List<Reservations>> getAllReservations() async {
+  Future<List<Reservations>> getAllReservations(String date) async {
     List<ReservationModel> responseList = [];
+    String requestList = "${AppConstants.getAllReservationQuery}'${date}'";
     print("let's start !!");
     try {
       final conn = await MySqlConnection.connect(ConnectionSettings(
-          host: AppConstants.connectionHost,
-          port: AppConstants.connectionPort,
-          user: AppConstants.connectionUser,
-          db: AppConstants.connectionDbName,
-          password: AppConstants.connectionPass));
+        host: AppConstants.connectionHost,
+        port: AppConstants.connectionPort,
+        user: AppConstants.connectionUser,
+        db: AppConstants.connectionDbName,
+        //password: AppConstants.connectionPass,
+      ));
 
       print("Connection opened");
-      var response = await conn.query(AppConstants.getAllReservationQuery);
+      //print(requestList);
+      var response = await conn.query(requestList);
       print("response done");
       for (var row in response) {
         print('Name: ${row[0]}, email: ${row[1]}');
@@ -30,6 +33,7 @@ class HomeRemoteDataSource implements BaseHomeRemoteDataSource {
       await conn.close();
       print("connection closed");
     } catch (error) {
+      print("Error is : ${error.toString()}");
       throw RemoteDataBaseException(msg: error.toString());
     }
     return responseList;

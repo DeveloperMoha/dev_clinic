@@ -1,3 +1,4 @@
+import 'package:devclinic/core/utils/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -190,16 +191,16 @@ Container patientCaseEditBtn(title, context, id) => Container(
 Widget getWidget(state, context) {
   if (state is LoadingHome) {
     print("Loaaaadingg....");
-    return const Text("wait for loading data");
+    return const CircularProgressIndicator(
+      color: ColorManager.blueColor1,
+      strokeWidth: 2,
+    );
   } else if (state is LoadedHome) {
-    print("Loaaaaded....");
-
     return buildListView(BlocProvider.of<HomeCubit>(context)
         .allHomeList[BlocProvider.of<HomeCubit>(context).selectedBottomIndex]);
   } else {
     print("Error Loaaaadingg....");
-    return const Text("sorry error");
+    //return const Image(image: AssetImage(ImageManager.noDataFound));
+    return const Text("");
   }
-  print("unknown Loaaaadingg....");
-  return const Text("Sorry");
 }

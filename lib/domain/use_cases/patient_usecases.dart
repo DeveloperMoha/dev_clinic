@@ -12,4 +12,8 @@ class PatientUseCases {
   Future<Either<Failure, List<Patient>>> getAllPatients() async {
     return await basePatientRepository.getAllPatients();
   }
+
+  Future<Either<Failure, int>> addNewPatient(Patient patient) async {
+    return await basePatientRepository.addNewPatient(patient);
+  }
 }

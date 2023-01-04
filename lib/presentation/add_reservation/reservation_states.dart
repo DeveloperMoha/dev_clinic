@@ -34,3 +34,9 @@ class SetRestValue extends ReservationStates {
   int restValue;
   SetRestValue(this.priceValue, this.paidValue, this.restValue);
 }
+
+class SelectPaitientId extends ReservationStates {
+  int paitientId;
+
+  SelectPaitientId(this.paitientId);
+}

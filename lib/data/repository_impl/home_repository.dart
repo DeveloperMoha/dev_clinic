@@ -13,8 +13,9 @@ class HomeRepository implements BaseHomeRepository {
     required this.baseHomeRemoteDataSource,
   });
   @override
-  Future<Either<Failure, List<Reservations>>> getAllReservations() async {
-    final result = await baseHomeRemoteDataSource.getAllReservations();
+  Future<Either<Failure, List<Reservations>>> getAllReservations(
+      String date) async {
+    final result = await baseHomeRemoteDataSource.getAllReservations(date);
 
     try {
       return Right(result);

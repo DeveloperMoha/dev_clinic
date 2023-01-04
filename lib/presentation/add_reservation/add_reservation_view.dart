@@ -18,9 +18,9 @@ class AddReservationScreen extends StatefulWidget {
 class _AddReservationScreenState extends State<AddReservationScreen> {
   final formKey = GlobalKey<FormState>();
   final patientFormKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context);
     return BlocProvider<ReservationCubit>(create: (context) {
       return ReservationCubit(IntialReservationState());
     }, child: BlocBuilder<ReservationCubit, ReservationStates>(
@@ -52,7 +52,7 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                 children: [
                   Row(
                     children: [
-                      addingTitleText("Reservation Type : "),
+                      addingTitleText("Reservation Type : ", textSize: 18),
                       DropdownButton<String>(
                         value: cubitObj.reservationTypeValue,
                         icon: const Icon(Icons.arrow_drop_down),
@@ -73,7 +73,7 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                             child: Text(
                               value,
                               style: const TextStyle(
-                                fontSize: 25,
+                                fontSize: 20,
                               ),
                             ),
                           );
@@ -86,9 +86,9 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                   ),
                   Row(
                     children: [
-                      addingTitleText("Patient Name : "),
-                      addingAutoCompleteTextField(
-                          cubitObj.reservationType, 200.0),
+                      addingTitleText("Patient Name : ", textSize: 18),
+                      addingAutoCompleteTextField(cubitObj.patientNamesList,
+                          media.size.width * (2 / 5), context),
                     ],
                   ),
                   const SizedBox(
@@ -172,7 +172,7 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                                 child: Text(
                                   value,
                                   style: const TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 18,
                                   ),
                                 ),
                               );
@@ -204,7 +204,7 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                                 child: Text(
                                   value,
                                   style: const TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 18,
                                   ),
                                 ),
                               );
@@ -231,10 +231,14 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                           Row(
                             children: [
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   addingTitleText("Patient Name  ",
                                       textSize: 18),
-                                  addingTextFormField(TextInputType.text, 240,
+                                  addingTextFormField(
+                                      TextInputType.text,
+                                      media.size.width * (.5),
                                       cubitObj.paitientNameController),
                                 ],
                               ),
@@ -249,14 +253,16 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                               Row(
                                 children: [
                                   addingTitleText("age ", textSize: 18),
-                                  addingTextFormField(TextInputType.number, 40,
+                                  addingTextFormField(TextInputType.number, 30,
                                       cubitObj.paitientAgeController),
                                 ],
                               ),
                               Row(
                                 children: [
                                   addingTitleText("address  ", textSize: 18),
-                                  addingTextFormField(TextInputType.text, 200,
+                                  addingTextFormField(
+                                      TextInputType.text,
+                                      media.size.width * (.4),
                                       cubitObj.paitientAddressController),
                                 ],
                               ),
@@ -270,15 +276,17 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                             children: [
                               Row(
                                 children: [
-                                  addingTitleText("phone ", textSize: 16),
-                                  addingTextFormField(TextInputType.number, 80,
+                                  addingTitleText("phone ", textSize: 14),
+                                  addingTextFormField(TextInputType.number, 70,
                                       cubitObj.paitientPhoneController),
                                 ],
                               ),
                               Row(
                                 children: [
                                   addingTitleText("eduacation  ", textSize: 16),
-                                  addingTextFormField(TextInputType.text, 140,
+                                  addingTextFormField(
+                                      TextInputType.text,
+                                      media.size.width * (.3),
                                       cubitObj.paitientEducationController),
                                 ],
                               ),
@@ -293,50 +301,12 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                                 children: [
                                   addingTitleText("social-statue ",
                                       textSize: 18),
-                                  addingTextFormField(TextInputType.text, 250,
+                                  addingTextFormField(
+                                      TextInputType.text,
+                                      media.size.width * (.5),
                                       cubitObj.paitientsocialStatueController),
                                 ],
                               ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  addingTitleText("specification  ",
-                                      textSize: 18),
-                                  addingTextFormField(TextInputType.text, 245,
-                                      cubitObj.paitientSpecificationController),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  addingTitleText("medicine  ", textSize: 18),
-                                  addingTextFormField(TextInputType.text, 275,
-                                      cubitObj.paitientMedicineController),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              addingTitleText("notes    ", textSize: 20),
-                              addingTextAreaField(
-                                  290, cubitObj.paitientNotesController),
                             ],
                           ),
                           const SizedBox(
@@ -346,9 +316,11 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                             child: ElevatedButton(
                               onPressed: () {
                                 if (patientFormKey.currentState!.validate()) {
+                                  cubitObj.addNewPatient();
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                        content: Text('Now U can insert Data')),
+                                        content: Text(
+                                            'Patient Data inserted successfully')),
                                   );
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -359,6 +331,8 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 30),
                                 backgroundColor: ColorManager.blueColor1,
                               ),
                               child: addingTitleText("Add New Patient",
@@ -370,24 +344,68 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                     ),
                   ),
                   const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          addingTitleText("specification  ", textSize: 18),
+                          addingTextFormField(
+                              TextInputType.text,
+                              media.size.width * (.5),
+                              cubitObj.paitientSpecificationController),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          addingTitleText("medicine  ", textSize: 18),
+                          addingTextFormField(
+                              TextInputType.text,
+                              media.size.width * (.5),
+                              cubitObj.paitientMedicineController),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      addingTitleText("notes    ", textSize: 20),
+                      addingTextAreaField(media.size.width * (.6),
+                          cubitObj.paitientNotesController),
+                    ],
+                  ),
+                  const SizedBox(
                     height: 20,
                   ),
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        // if (formKey.currentState!.validate()) {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //     const SnackBar(
-                        //         content: Text('Now U can insert Data')),
-                        //   );
-                        // } else {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //     const SnackBar(
-                        //         content:
-                        //             Text('sorry plz fill required fields')),
-                        //   );
-                        // }
-                        cubitObj.testFun();
+                        if (patientFormKey.currentState!.validate()) {
+                          cubitObj.addNewReservation();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    'Reservation Data inserted successfully')),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('sorry plz fill required fields')),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorManager.blueColor2,
