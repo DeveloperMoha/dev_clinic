@@ -12,4 +12,6 @@ class StringManager {
   static const String homeBottomBarItem3 = "sessions";
 
   static const String homePatientName = "sameh khalaf soliman elsayed ali";
+
+  static const String addReservationTitle = "Add New Reservation";
 }
