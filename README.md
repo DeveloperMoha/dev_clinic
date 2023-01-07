@@ -1,16 +1,10 @@
 # devclinic
 
-A new Flutter project.
+# devclinic is an app to manage doctor clinic 
 
-## Getting Started
+# using clean architecture, bloc"cubit"
+# dealing directly with mysql db
 
-This project is a starting point for a Flutter application.
+# it will be finished soon ,, ♥
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_1672785364](https://user-images.githubusercontent.com/30954186/210802766-04af83c9-9f31-410b-88ed-49a6986f8773.png)
