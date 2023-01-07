@@ -3,7 +3,8 @@ import 'package:devclinic/presentation/add_reservation/reservation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/patient.dart';
+import '../../core/utils/font_manager.dart';
+import '../../core/utils/images_manager.dart';
 
 Widget dropDownMenu(dropList, dropValue, context) {
   var cubitObj = BlocProvider.of<ReservationCubit>(context);
@@ -30,18 +31,6 @@ Widget dropDownMenu(dropList, dropValue, context) {
         ),
       );
     }).toList(),
-  );
-}
-
-Widget addingTitleText(String title,
-    {double textSize = 20.0, titleColor = ColorManager.darkGreyColor}) {
-  return Text(
-    title,
-    style: TextStyle(
-      fontSize: textSize,
-      color: titleColor,
-      fontWeight: FontWeight.bold,
-    ),
   );
 }
 
@@ -127,12 +116,12 @@ Widget addingTextFormField(
         border: InputBorder.none,
       ),
       controller: fieldController,
-      // validator: (value) {
-      //   if (value == null || value.isEmpty) {
-      //     return 'required';
-      //   }
-      //   return null;
-      // },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'required';
+        }
+        return null;
+      },
       enabled: enable,
     ),
   );

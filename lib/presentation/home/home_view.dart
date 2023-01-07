@@ -17,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(create: ((context) {
@@ -25,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
+            key: scaffoldKey,
             backgroundColor: ColorManager.mainBgLightColor,
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -38,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: ColorManager.whiteColor,
                 ),
               ),
+              leading: buildLeading(scaffoldKey),
             ),
             body: Column(
               children: [
@@ -133,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(child: getWidget(state, context)),
               ],
             ),
+            drawer: buildDrawer(context),
             bottomNavigationBar: BottomNavigationBar(
                 backgroundColor: ColorManager.blueColor3,
                 currentIndex:

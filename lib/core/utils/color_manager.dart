@@ -10,6 +10,7 @@ class ColorManager {
   static const Color blueColor3 = Color(0xffBBE1FA);
 
   static const Color whiteColor = Color(0xffffffff);
+  static const Color blackColor = Color(0xff000000);
   static const Color lightGreyColor = Color(0xffF0F5F9);
   static const Color darkGreyColor = Color(0xff52616B);
 
@@ -21,9 +22,19 @@ class ColorManager {
   static const LinearGradient listViewItemGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    stops: [0.01, 0.8],
+    stops: [0.1, 0.8],
     colors: [
       ColorManager.blueColor3,
+      ColorManager.blueColor1,
+    ],
+  );
+  static const LinearGradient doctorListViewItemGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    stops: [0.01, 0.4, 0.8],
+    colors: [
+      ColorManager.lightGreyColor,
+      ColorManager.blueColor2,
       ColorManager.blueColor1,
     ],
   );
@@ -31,4 +42,8 @@ class ColorManager {
   static BoxDecoration listViewItemDecoration = BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       gradient: ColorManager.listViewItemGradient);
+
+  static BoxDecoration doctorListViewItemDecoration = BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      gradient: ColorManager.doctorListViewItemGradient);
 }

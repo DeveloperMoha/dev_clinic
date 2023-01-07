@@ -36,7 +36,9 @@ class SplashScreen extends StatelessWidget {
               width: 100,
               height: 120,
             ),
-            SharedWidgets.verticalSpace(10.0),
+            SizedBox(
+              height: 20,
+            ),
             const Text(
               StringManager.appTitle,
               style: TextStyle(
@@ -46,7 +48,9 @@ class SplashScreen extends StatelessWidget {
                 color: ColorManager.whiteColor,
               ),
             ),
-            SharedWidgets.verticalSpace(20.0),
+            SizedBox(
+              height: 20,
+            ),
             const Text(
               StringManager.splashHeadText,
               textAlign: TextAlign.center,
@@ -56,7 +60,9 @@ class SplashScreen extends StatelessWidget {
                 color: ColorManager.lightGreyColor,
               ),
             ),
-            SharedWidgets.verticalSpace(20.0),
+            SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorManager.blueColor2,

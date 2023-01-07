@@ -1,5 +1,6 @@
 import 'package:devclinic/data/models/patient_model.dart';
 import 'package:devclinic/domain/entities/adding_reservation.dart';
+import 'package:devclinic/domain/entities/doctor.dart';
 import 'package:devclinic/domain/entities/patient.dart';
 
 import '../../domain/entities/reservations.dart';
@@ -16,4 +17,12 @@ abstract class BasePatientRemoteDataSource {
 
 abstract class BaseAddReservationRemoteDataSource {
   Future<int> addNewreservation(AddingReservation addingReservation);
+}
+
+abstract class BaseDoctorRemoteDataSource {
+  Future<List<Doctor>> getAllDoctors();
+
+  Future<int> addNewDoctor(Doctor doctor);
+
+  Future<int> updateDoctor(Doctor doctor);
 }

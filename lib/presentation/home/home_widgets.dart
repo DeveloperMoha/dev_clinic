@@ -1,7 +1,11 @@
 import 'package:devclinic/core/utils/images_manager.dart';
+import 'package:devclinic/core/utils/strings_manager.dart';
+import 'package:devclinic/presentation/add_reservation/add_reservation_view.dart';
+import 'package:devclinic/presentation/doctor/doctor_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/components/shared_components.dart';
 import '../../core/utils/color_manager.dart';
 import '../../core/utils/font_manager.dart';
 import 'home_cubit.dart';
@@ -135,7 +139,13 @@ Widget listViewItem(id, caseType, patientName, reservationType, date, time,
       ),
     );
 
-Widget buildListView(reservationList) => ListView.builder(
+Widget buildListView(reservationList) {
+  //print("length is : ${reservationList.length}");
+
+  if (reservationList.length == 0) {
+    return const Image(image: AssetImage(ImageManager.noDataFound));
+  } else {
+    return ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: reservationList.length,
       itemBuilder: (context, index) {
@@ -150,6 +160,8 @@ Widget buildListView(reservationList) => ListView.builder(
             context);
       },
     );
+  }
+}
 
 // out , exist , in , done
 Color getCaseColor(String caseType) {
@@ -204,3 +216,137 @@ Widget getWidget(state, context) {
     return const Text("");
   }
 }
+
+// build home drawer
+Widget buildDrawer(context) => Drawer(
+      child: Container(
+        padding: const EdgeInsets.only(top: 0),
+        decoration: const BoxDecoration(
+          color: ColorManager.blueColor2,
+        ),
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: const EdgeInsets.only(top: 0),
+          children: [
+            DrawerHeader(
+              padding: const EdgeInsets.only(
+                top: 120,
+              ),
+              margin: const EdgeInsets.only(bottom: 0),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(ImageManager.coverImage),
+                    fit: BoxFit.cover),
+              ),
+              child: Container(
+                color: ColorManager.blueColor3.withOpacity(.85),
+                alignment: Alignment.center,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: addingTitleText("Dev Clinic",
+                    textSize: 22, titleColor: ColorManager.blackColor),
+              ),
+            ),
+            Container(
+              color: ColorManager.blackColor,
+              height: 5,
+            ),
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: ColorManager.blackColor.withOpacity(.55),
+                  border: const Border(
+                      bottom: BorderSide(
+                    color: ColorManager.whiteColor,
+                    width: 2.0,
+                  ))),
+              child: ListTile(
+                  title: addingTitleText(StringManager.homeDrawerItem1,
+                      textSize: 22, titleColor: ColorManager.whiteColor),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const DoctorScreen()));
+                  }),
+            ),
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: ColorManager.blackColor.withOpacity(.55),
+                  border: const Border(
+                      bottom: BorderSide(
+                    color: ColorManager.whiteColor,
+                    width: 2.0,
+                  ))),
+              child: ListTile(
+                  title: addingTitleText(StringManager.homeDrawerItem2,
+                      textSize: 22, titleColor: ColorManager.whiteColor),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const AddReservationScreen()));
+                  }),
+            ),
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: ColorManager.blackColor.withOpacity(.55),
+                  border: const Border(
+                      bottom: BorderSide(
+                    color: ColorManager.whiteColor,
+                    width: 2.0,
+                  ))),
+              child: ListTile(
+                  title: addingTitleText(StringManager.homeDrawerItem3,
+                      textSize: 22, titleColor: ColorManager.whiteColor),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const AddReservationScreen()));
+                  }),
+            ),
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: ColorManager.blackColor.withOpacity(.55),
+                  border: const Border(
+                      bottom: BorderSide(
+                    color: ColorManager.whiteColor,
+                    width: 2.0,
+                  ))),
+              child: ListTile(
+                  title: addingTitleText(StringManager.homeDrawerItem4,
+                      textSize: 22, titleColor: ColorManager.whiteColor),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const AddReservationScreen()));
+                  }),
+            ),
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: ColorManager.blackColor.withOpacity(.55),
+                  border: const Border(
+                      bottom: BorderSide(
+                    color: ColorManager.whiteColor,
+                    width: 2.0,
+                  ))),
+              child: ListTile(
+                  title: addingTitleText(StringManager.homeDrawerItem5,
+                      textSize: 22, titleColor: ColorManager.whiteColor),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const AddReservationScreen()));
+                  }),
+            ),
+          ],
+        ),
+      ),
+    );
+
+Widget buildLeading(scaffoldKey) => IconButton(
+      icon: const Icon(Icons.menu_sharp),
+      onPressed: () => scaffoldKey.currentState.openDrawer(),
+    );

@@ -4,6 +4,7 @@ import 'package:devclinic/presentation/add_reservation/reservation_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/components/shared_components.dart';
 import '../../core/utils/color_manager.dart';
 import '../../core/utils/font_manager.dart';
 import '../../core/utils/strings_manager.dart';
@@ -35,7 +36,7 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
           title: const Text(
             StringManager.addReservationTitle,
             style: TextStyle(
-              fontSize: 28,
+              fontSize: 22,
               fontFamily: FontManager.abel,
               fontWeight: FontWeight.w900,
               color: ColorManager.whiteColor,
