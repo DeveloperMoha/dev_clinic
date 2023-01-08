@@ -9,7 +9,7 @@ import '../../core/utils/images_manager.dart';
 import '../../core/utils/strings_manager.dart';
 
 AppBar doctorAppBar(context) => AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       backgroundColor: ColorManager.blueColor1,
       title: const Text(
         StringManager.doctorAppBarTitle,
@@ -225,7 +225,7 @@ Widget buildAddDoctorBody(idController, nameController, ageController,
               children: [
                 addingTitleText("Name  :   "),
                 addingSharedTextFormField(
-                    TextInputType.text, nameController, 280.0)
+                    TextInputType.text, nameController, 250.0)
               ],
             ),
           ),
@@ -235,7 +235,7 @@ Widget buildAddDoctorBody(idController, nameController, ageController,
               children: [
                 addingTitleText("age  :       "),
                 addingSharedTextFormField(
-                    TextInputType.number, ageController, 280.0)
+                    TextInputType.number, ageController, 250.0)
               ],
             ),
           ),
@@ -245,7 +245,7 @@ Widget buildAddDoctorBody(idController, nameController, ageController,
               children: [
                 addingTitleText("Phone :   "),
                 addingSharedTextFormField(
-                    TextInputType.text, phoneController, 280.0)
+                    TextInputType.text, phoneController, 250.0)
               ],
             ),
           ),
@@ -255,7 +255,7 @@ Widget buildAddDoctorBody(idController, nameController, ageController,
               children: [
                 addingTitleText("Specification  :   "),
                 addingSharedTextFormField(
-                    TextInputType.text, specificationController, 220.0)
+                    TextInputType.text, specificationController, 180.0)
               ],
             ),
           ),

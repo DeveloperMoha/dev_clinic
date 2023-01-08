@@ -2,6 +2,7 @@ import 'package:devclinic/core/utils/images_manager.dart';
 import 'package:devclinic/core/utils/strings_manager.dart';
 import 'package:devclinic/presentation/add_reservation/add_reservation_view.dart';
 import 'package:devclinic/presentation/doctor/doctor_view.dart';
+import 'package:devclinic/presentation/patient/patient_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -251,96 +252,16 @@ Widget buildDrawer(context) => Drawer(
               color: ColorManager.blackColor,
               height: 5,
             ),
-            Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: ColorManager.blackColor.withOpacity(.55),
-                  border: const Border(
-                      bottom: BorderSide(
-                    color: ColorManager.whiteColor,
-                    width: 2.0,
-                  ))),
-              child: ListTile(
-                  title: addingTitleText(StringManager.homeDrawerItem1,
-                      textSize: 22, titleColor: ColorManager.whiteColor),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const DoctorScreen()));
-                  }),
-            ),
-            Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: ColorManager.blackColor.withOpacity(.55),
-                  border: const Border(
-                      bottom: BorderSide(
-                    color: ColorManager.whiteColor,
-                    width: 2.0,
-                  ))),
-              child: ListTile(
-                  title: addingTitleText(StringManager.homeDrawerItem2,
-                      textSize: 22, titleColor: ColorManager.whiteColor),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const AddReservationScreen()));
-                  }),
-            ),
-            Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: ColorManager.blackColor.withOpacity(.55),
-                  border: const Border(
-                      bottom: BorderSide(
-                    color: ColorManager.whiteColor,
-                    width: 2.0,
-                  ))),
-              child: ListTile(
-                  title: addingTitleText(StringManager.homeDrawerItem3,
-                      textSize: 22, titleColor: ColorManager.whiteColor),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const AddReservationScreen()));
-                  }),
-            ),
-            Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: ColorManager.blackColor.withOpacity(.55),
-                  border: const Border(
-                      bottom: BorderSide(
-                    color: ColorManager.whiteColor,
-                    width: 2.0,
-                  ))),
-              child: ListTile(
-                  title: addingTitleText(StringManager.homeDrawerItem4,
-                      textSize: 22, titleColor: ColorManager.whiteColor),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const AddReservationScreen()));
-                  }),
-            ),
-            Container(
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: ColorManager.blackColor.withOpacity(.55),
-                  border: const Border(
-                      bottom: BorderSide(
-                    color: ColorManager.whiteColor,
-                    width: 2.0,
-                  ))),
-              child: ListTile(
-                  title: addingTitleText(StringManager.homeDrawerItem5,
-                      textSize: 22, titleColor: ColorManager.whiteColor),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const AddReservationScreen()));
-                  }),
-            ),
+            buildHomeDrawerItem(
+                context, StringManager.homeDrawerItem1, const DoctorScreen()),
+            buildHomeDrawerItem(
+                context, StringManager.homeDrawerItem2, const PatientScreen()),
+            buildHomeDrawerItem(
+                context, StringManager.homeDrawerItem3, const DoctorScreen()),
+            buildHomeDrawerItem(
+                context, StringManager.homeDrawerItem4, const DoctorScreen()),
+            buildHomeDrawerItem(
+                context, StringManager.homeDrawerItem5, const DoctorScreen()),
           ],
         ),
       ),
@@ -349,4 +270,22 @@ Widget buildDrawer(context) => Drawer(
 Widget buildLeading(scaffoldKey) => IconButton(
       icon: const Icon(Icons.menu_sharp),
       onPressed: () => scaffoldKey.currentState.openDrawer(),
+    );
+
+Widget buildHomeDrawerItem(context, title, screen) => Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+          color: ColorManager.blackColor.withOpacity(.55),
+          border: const Border(
+              bottom: BorderSide(
+            color: ColorManager.whiteColor,
+            width: 2.0,
+          ))),
+      child: ListTile(
+          title: addingTitleText(title,
+              textSize: 22, titleColor: ColorManager.whiteColor),
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (BuildContext context) => screen));
+          }),
     );

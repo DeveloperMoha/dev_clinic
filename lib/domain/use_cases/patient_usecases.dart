@@ -16,4 +16,9 @@ class PatientUseCases {
   Future<Either<Failure, int>> addNewPatient(Patient patient) async {
     return await basePatientRepository.addNewPatient(patient);
   }
+
+  Future<Either<Failure, List<Patient>>> getPatientsOrederdBy(
+      String order) async {
+    return await basePatientRepository.getPatientsOrederdBy(order);
+  }
 }

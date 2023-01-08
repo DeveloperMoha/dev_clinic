@@ -31,7 +31,7 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
       return Scaffold(
         backgroundColor: ColorManager.mainBgLightColor,
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           backgroundColor: ColorManager.blueColor1,
           title: const Text(
             StringManager.addReservationTitle,
@@ -97,16 +97,16 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                   ),
                   Row(
                     children: [
-                      addingTitleText("Date ", textSize: 18),
+                      addingTitleText("Date ", textSize: 16),
                       addingTitleText(cubitObj.todayDate.toString(),
-                          textSize: 18, titleColor: ColorManager.blueColor2),
+                          textSize: 16, titleColor: ColorManager.blueColor2),
                       addingDateBtn(context),
                       const SizedBox(
                         width: 10,
                       ),
-                      addingTitleText("Time ", textSize: 18),
+                      addingTitleText("Time ", textSize: 16),
                       addingTitleText(cubitObj.todayTime.toString(),
-                          textSize: 18, titleColor: ColorManager.blueColor2),
+                          textSize: 16, titleColor: ColorManager.blueColor2),
                       addingTimeBtn(context, icon: Icons.timer),
                     ],
                   ),
@@ -249,18 +249,18 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                             height: 10,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
                                   addingTitleText("age ", textSize: 18),
-                                  addingTextFormField(TextInputType.number, 30,
+                                  addingTextFormField(TextInputType.number, 35,
                                       cubitObj.paitientAgeController),
                                 ],
                               ),
                               Row(
                                 children: [
-                                  addingTitleText("address  ", textSize: 18),
+                                  addingTitleText("  address  ", textSize: 18),
                                   addingTextFormField(
                                       TextInputType.text,
                                       media.size.width * (.4),
@@ -273,21 +273,22 @@ class _AddReservationScreenState extends State<AddReservationScreen> {
                             height: 10,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
-                                  addingTitleText("phone ", textSize: 14),
+                                  addingTitleText("phone ", textSize: 12),
                                   addingTextFormField(TextInputType.number, 70,
                                       cubitObj.paitientPhoneController),
                                 ],
                               ),
                               Row(
                                 children: [
-                                  addingTitleText("eduacation  ", textSize: 16),
+                                  addingTitleText("  eduacation  ",
+                                      textSize: 14),
                                   addingTextFormField(
                                       TextInputType.text,
-                                      media.size.width * (.3),
+                                      media.size.width * (.25),
                                       cubitObj.paitientEducationController),
                                 ],
                               ),

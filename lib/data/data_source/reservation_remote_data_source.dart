@@ -18,7 +18,7 @@ class ReservationRemoteDataSource
         port: AppConstants.connectionPort,
         user: AppConstants.connectionUser,
         db: AppConstants.connectionDbName,
-        //password: AppConstants.connectionPass,
+        password: AppConstants.connectionPass,
       ));
 
       print("Connection opened");

@@ -8,4 +8,6 @@ abstract class BasePatientRepository {
 
   //adding new patient will return id of the inserted patient row
   Future<Either<Failure, int>> addNewPatient(Patient patient);
+
+  Future<Either<Failure, List<Patient>>> getPatientsOrederdBy(String order);
 }

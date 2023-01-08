@@ -116,10 +116,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            const AddReservationScreen()));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const AddReservationScreen()));
                               }),
                         ],
                       ),

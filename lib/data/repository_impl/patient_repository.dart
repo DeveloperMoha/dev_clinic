@@ -34,4 +34,17 @@ class PatientRepository implements BasePatientRepository {
       return Left(RemoteDataBaseFailure(message: failure.msg));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Patient>>> getPatientsOrederdBy(
+      String order) async {
+    final result =
+        await basePatientRemoteDataSource.getPatientsOrederdBy(order);
+
+    try {
+      return Right(result);
+    } on RemoteDataBaseException catch (failure) {
+      return Left(RemoteDataBaseFailure(message: failure.msg));
+    }
+  }
 }

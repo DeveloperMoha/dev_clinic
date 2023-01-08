@@ -1,15 +1,25 @@
+import 'package:mysql1/mysql1.dart';
+
 class AppConstants {
-  // static const String connectionHost = "sql.freedb.tech";
-  // static const int connectionPort = 3306;
-  // static const String connectionUser = "freedb_devmoha";
-  // static const String connectionPass = "5hE#U2c#%*NPkfy";
-  // static const String connectionDbName = "freedb_clinic_db";
-  //==============================================================
-  static const String connectionHost = "192.168.1.3";
+  // var settings = ConnectionSettings(
+  //   host: connectionHost,
+  //   port: connectionPort,
+  //   user: connectionUser,
+  //   password: connectionPass,
+  //   db: connectionDbName,
+  // );
+
+  static const String connectionHost = "sql.freedb.tech";
   static const int connectionPort = 3306;
-  static const String connectionUser = "root";
-  static const String connectionPass = "";
-  static const String connectionDbName = "clinic_db";
+  static const String connectionUser = "freedb_devmoha";
+  static const String connectionPass = "5hE#U2c#%*NPkfy";
+  static const String connectionDbName = "freedb_clinic_db";
+  //==============================================================
+  // static const String connectionHost = "192.168.1.3";
+  // static const int connectionPort = 3306;
+  // static const String connectionUser = "root";
+  // static const String connectionPass = "";
+  // static const String connectionDbName = "clinic_db";
 //to connect to local host from emulator use
 /*
 to connect to local host from emulator use 
@@ -49,4 +59,11 @@ to connect to local host from emulator use
 
   static const String updateDoctorQuery =
       "UPDATE `doctors` SET `name`= ?,`age`= ?,`phone`= ?,`specification`= ? WHERE `doctor_id`= ?";
+
+  static const String getPatientByQuery =
+      "SELECT * FROM `patients` ORDER BY ? ";
+
+  static String getPatientByOrderedQuery(String order) {
+    return "SELECT * FROM `patients` ORDER BY $order ASC";
+  }
 }

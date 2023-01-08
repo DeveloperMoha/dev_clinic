@@ -13,6 +13,7 @@ abstract class BasePatientRemoteDataSource {
   Future<List<Patient>> getAllPatients();
 
   Future<int> addNewPatient(Patient patient);
+  Future<List<Patient>> getPatientsOrederdBy(String order);
 }
 
 abstract class BaseAddReservationRemoteDataSource {

@@ -17,7 +17,7 @@ class DoctorRemoteDataSource implements BaseDoctorRemoteDataSource {
         port: AppConstants.connectionPort,
         user: AppConstants.connectionUser,
         db: AppConstants.connectionDbName,
-        //password: AppConstants.connectionPass,
+        password: AppConstants.connectionPass,
       ));
 
       print("Connection opened");
@@ -45,7 +45,7 @@ class DoctorRemoteDataSource implements BaseDoctorRemoteDataSource {
         port: AppConstants.connectionPort,
         user: AppConstants.connectionUser,
         db: AppConstants.connectionDbName,
-        //password: AppConstants.connectionPass,
+        password: AppConstants.connectionPass,
       ));
 
       print("Connection opened");
@@ -76,7 +76,7 @@ class DoctorRemoteDataSource implements BaseDoctorRemoteDataSource {
         port: AppConstants.connectionPort,
         user: AppConstants.connectionUser,
         db: AppConstants.connectionDbName,
-        //password: AppConstants.connectionPass,
+        password: AppConstants.connectionPass,
       ));
 
       print("Connection opened");
