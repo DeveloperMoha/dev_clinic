@@ -7,4 +7,4 @@
 
 # it will be finished soon ,, ♥
 
-![Screenshot_1672785364](https://user-images.githubusercontent.com/30954186/210802766-04af83c9-9f31-410b-88ed-49a6986f8773.png)
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/30954186/212037819-698d5ecb-7e86-4e74-9272-a0e689af6c4c.gif)
